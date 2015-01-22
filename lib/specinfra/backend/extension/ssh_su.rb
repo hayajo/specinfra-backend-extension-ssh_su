@@ -32,7 +32,7 @@ module Specinfra
         cmd = super(cmd)
         if su?
           su_user = Specinfra.configuration.su_user || 'root'
-          cmd = "#{su} #{su_user} -c #{cmd}"
+          cmd = "#{su} - #{su_user} -c #{cmd.shellescape}"
         end
         cmd
       end
